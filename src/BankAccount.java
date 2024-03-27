@@ -13,7 +13,7 @@ public class BankAccount {
         balance = 0;
     }
 
-    // Paramaterized ctor
+    // Parameterized ctor
     public BankAccount(double balance){
         this.balance = balance;
     }
@@ -35,9 +35,15 @@ public class BankAccount {
     }
     // This method will deposit specified amount of money to the account
     public void deposit(double amount){
-        balance += amount;
-        System.out.println("Amount of "+ GREEN+  amount +" EUR"+RESET+ " has been added to the balance.");
-        System.out.println();
+        if(amount >0) {
+            balance += amount;
+            System.out.println("Amount of " + GREEN + amount + " EUR" + RESET + " has been added to the balance.");
+            System.out.println();
+        }
+        else{
+            System.out.println(RED +"Input amount can't be negative!"+ RESET);
+            System.out.println();
+        }
     }
     // This method will
 

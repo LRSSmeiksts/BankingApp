@@ -9,11 +9,12 @@ public class BankAccountDemo {
         Scanner scanner = new Scanner(System.in);
         int optionNum;
         double amount;
+        boolean flag = true;
 
         BankAccount user1 = new BankAccount(5.01);
         BankAccount user2 = new BankAccount();
 
-        while(true){
+        while(flag){
             System.out.println("Press corresponding keys to do an operation:");
             System.out.println(" (1) to view your current bank balance.");
             System.out.println(" (2) to withdraw amount from your bank account.");
@@ -39,11 +40,12 @@ public class BankAccountDemo {
                         user1.deposit(amount);
                         break;
                     case 4:
-                        System.out.println("Write amount x.xx to be transfered to the other account: ");
+                        System.out.println("Write amount x.xx to be transferred to the other account: ");
                         amount = scanner.nextDouble();
                         user1.transfer(amount, user1, user2);
                         break;
                     case 5:
+                        flag = false;
                         break;
                     default:
                         System.out.println(RED + "Input correct operation number!"+ RESET);
@@ -55,6 +57,7 @@ public class BankAccountDemo {
                 System.out.println();
                 scanner.next();
             }
+
 
         }
     }
