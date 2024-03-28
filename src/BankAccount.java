@@ -1,8 +1,6 @@
 import java.lang.Math;
-
-
 public class BankAccount {
-
+    // For formatting purposes
     public static String GREEN = "\u001B[32m";
     public static String RESET = "\u001B[0m";
     public static String RED = "\u001B[31m";
@@ -35,15 +33,9 @@ public class BankAccount {
     }
     // This method will deposit specified amount of money to the account
     public void deposit(double amount){
-        if(amount >0) {
-            balance += amount;
-            System.out.println("Amount of " + GREEN + amount + " EUR" + RESET + " has been added to the balance.");
-            System.out.println();
-        }
-        else{
-            System.out.println(RED +"Input amount can't be negative!"+ RESET);
-            System.out.println();
-        }
+        balance += amount;
+        System.out.println("Amount of " + GREEN + amount + " EUR" + RESET + " has been added to the balance.");
+        System.out.println();
     }
     // This method will
 
@@ -71,4 +63,6 @@ public class BankAccount {
         }
     }
 }
+
+
 
