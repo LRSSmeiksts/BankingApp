@@ -5,21 +5,26 @@ public class BankAccount {
     public static String RESET = "\u001B[0m";
     public static String RED = "\u001B[31m";
     private double balance;
+    private String username;
 
     // Default ctor
     public BankAccount(){
         balance = 0;
+        username = "Default";
     }
 
     // Parameterized ctor
-    public BankAccount(double balance){
+    public BankAccount(double balance, String username){
         this.balance = balance;
+        this.username = username;
     }
 
     // Getters
     public double getBalance() {return balance;}
+    public String getUsername(){return username;}
     // Setters
     public void setBalance(double balance) { this.balance = balance;}
+    public void setUsername(String username){ this.username = username;}
 
     // Will round number to 2 decimal places for printing purposes
     public double roundToTwo(double number){
@@ -63,6 +68,7 @@ public class BankAccount {
         }
     }
 }
+
 
 
 

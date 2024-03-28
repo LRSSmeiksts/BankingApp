@@ -1,6 +1,7 @@
 ### IntelliJ IDEA ###
 .idea/
 out/
+bank_accounts.txt
 !**/src/main/**/out/
 !**/src/test/**/out/
 
