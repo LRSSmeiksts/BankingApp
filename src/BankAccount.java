@@ -37,8 +37,8 @@ public class BankAccount {
         System.out.println("Amount of " + GREEN + amount + " EUR" + RESET + " has been added to the balance.");
         System.out.println();
     }
-    // This method will
 
+    // This method withdraws specific amount from the account
     public void withdraw(double amount){
         //check if there is enough balance
         if(balance >= amount){
