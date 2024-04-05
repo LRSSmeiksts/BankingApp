@@ -17,5 +17,9 @@ public class WebController {
     public String login(){
         return "login";
     }
+    @GetMapping("/menu")
+    public String menu(){
+     return "menu";
+    }
 
 }
