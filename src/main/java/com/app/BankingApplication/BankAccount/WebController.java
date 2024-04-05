@@ -17,9 +17,9 @@ public class WebController {
     public String login(){
         return "login";
     }
-    @GetMapping("/menu")
+    @GetMapping("/bank/{id}/menu")
     public String menu(){
-     return "menu";
+     return "redirect:/bank/{id}/menu";
     }
 
 }
