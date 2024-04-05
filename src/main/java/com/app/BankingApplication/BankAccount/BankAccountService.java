@@ -8,6 +8,9 @@ public class BankAccountService {
     @Autowired
     private BankAccountRepository accountRepository;
 
+    public BankAccount getUserByUsername(String username) {
+        return accountRepository.findByUsername(username);
+    }
     public boolean isUsernameTaken(String username){
         BankAccount existingAccount = accountRepository.findByUsername(username);
         return existingAccount != null;
