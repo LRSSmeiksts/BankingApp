@@ -1,7 +1,10 @@
 package com.app.BankingApplication.BankAccount;
 
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class WebController {
@@ -21,8 +24,9 @@ public class WebController {
     public String menu(){
      return "menu";
     }
-
-    @GetMapping("/bank/{id}/viewDetails")
-    public String viewDetails(){return "viewDetails";}
+    @GetMapping("/bank/{id}/deposit")
+    public String deposit(){
+        return "deposit";
+    }
 
 }

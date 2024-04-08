@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Deposit</title>
+</head>
+<body>
+<h2>Deposit Amount</h2>
+<!-- Display error message if present -->
+<div th:if="${error}" style="color: red;">
+    <span th:text="${error}"></span>
+</div>
+<form action="/deposit" method="post">
+    Amount: <input type="number" name="amount"placeholder="0.00" pattern="^\d*(\.\d{0,2})?$"><br>
+</form>
+</body>
+</html>

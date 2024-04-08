@@ -11,7 +11,7 @@ public class BankAccountController {
     @Autowired
     private BankAccountService accountService;
     
-    private BankAccount currentUser;
+    public BankAccount currentUser;
 
     @PostMapping("/signup")
     public String signUp(@RequestParam String username, @RequestParam String password, @RequestParam String confirmPassword, Model model) {
@@ -48,24 +48,33 @@ public class BankAccountController {
     public String menu(@RequestParam String option){
        switch (option){
            case "viewDetails":
-               return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
+                   return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
+           case "deposit":
+               return "redirect:/bank"+currentUser.getId()+"/deposit";
            default:
                return "redirect:/bank/" + currentUser.getId() + "/menu";
        }
     }
-    @GetMapping("/viewDetails")
-    public String printBalance(Model model){
-        if(currentUser!=null) {
-            model.addAttribute("username", "Username: ");
-            model.addAttribute("balance", "Balance");
-            return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
-        }
-        else{
-            model.addAttribute("error", "There was an error!");
-            return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
-        }
-
-
+    @GetMapping("/bank/{id}/viewDetails")
+    public String viewDetails(Model model){
+            if (currentUser != null) {
+                model.addAttribute("username", currentUser.getUsername());
+                if(currentUser.getBalance()!=0) {
+                    model.addAttribute("balance", currentUser.getBalance());
+                }
+                else{
+                    model.addAttribute("balance", "0.00");
+                }
+            }
+            else {
+                model.addAttribute("error", "there was an error!");
+            }
+        return "viewDetails";
+    }
+    @PostMapping("/deposit")
+    public String deposit(@RequestParam double amount, Model model){
+        System.out.println("paga");
+        return "deposit";
     }
 
 }

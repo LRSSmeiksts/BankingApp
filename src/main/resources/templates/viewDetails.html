@@ -6,12 +6,20 @@
 </head>
 <body>
 <h2>Bank Account Details</h2>
-<div th:if="${username}" style="color: green;">
+
+<div>
+<div th:if="${username}" style="color: green; font-size: 40">
     <span th:text="${username}"></span>
 </div>
-<div th:if="${balance}" style="color: green;">
+<div th:if="${balance}" style="color: green;font-size: 40">
     <span th:text="${balance}"></span>
 </div>
+
+<div th:if="${error}" style="color: red;font-size: 40">
+    <span th:text="${error}"></span>
+</div>
+</div>
+
 
 </body>
 </html>
