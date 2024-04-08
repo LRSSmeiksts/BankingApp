@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 public class BankAccountController {
     @Autowired
     private BankAccountService accountService;
+    
+    private BankAccount currentUser;
 
     @PostMapping("/signup")
     public String signUp(@RequestParam String username, @RequestParam String password, @RequestParam String confirmPassword, Model model) {
@@ -26,21 +28,45 @@ public class BankAccountController {
         }
 
         // Create a new user
-        BankAccount newUser = new BankAccount(username, password, 0.0);
-        accountService.createAccount(newUser);
+        BankAccount currentUser = new BankAccount(username, password, 0.0);
+        accountService.createAccount(currentUser);
 
         // Redirect to the main menu page
-        return "redirect:/bank/" + newUser.getId() + "/menu";
+        return "redirect:/bank/" + currentUser.getId() + "/menu";
     }
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        BankAccount user = accountService.getUserByUsername(username);
-        if(user != null && user.getPassword().equals(password)){
+        currentUser = accountService.getUserByUsername(username);
+        if(currentUser != null && currentUser.getPassword().equals(password)){
 
-            return "redirect:/bank/" + user.getId() + "/menu";
+            return "redirect:/bank/" + currentUser.getId() + "/menu";
         }
         model.addAttribute("error","Invalid login information, please try again!");
         return "login";
     }
+    @PostMapping("/menu")
+    public String menu(@RequestParam String option){
+       switch (option){
+           case "viewDetails":
+               return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
+           default:
+               return "redirect:/bank/" + currentUser.getId() + "/menu";
+       }
+    }
+    @GetMapping("/viewDetails")
+    public String printBalance(Model model){
+        if(currentUser!=null) {
+            model.addAttribute("username", "Username: ");
+            model.addAttribute("balance", "Balance");
+            return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
+        }
+        else{
+            model.addAttribute("error", "There was an error!");
+            return "redirect:/bank/"+currentUser.getId()+"/viewDetails";
+        }
+
+
+    }
 
 }
+

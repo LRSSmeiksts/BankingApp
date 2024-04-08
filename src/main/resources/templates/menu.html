@@ -7,10 +7,12 @@
 <body>
 <h1>Main Menu</h1>
 <ul>
-    <li><a href="/bank/{id}/balance">View Balance</a></li>
-    <li><a href="/bank/{id}/deposit">Deposit</a></li>
-    <li><a href="/bank/{id}/withdraw">Withdraw</a></li>
-    <li><a href="/bank/{id}/transfer">Transfer</a></li>
+    <form action="/menu" method="post">
+        <button type="submit" name="option" value="viewDetails">View Details</button>
+        <button type="submit" name="option" value="deposit">Deposit</button>
+        <button type="submit" name="option" value="withdraw">Withdraw</button>
+        <button type="submit" name="option" value="transfer">Transfer</button>
+    </form>
 </ul>
 </body>
 </html>

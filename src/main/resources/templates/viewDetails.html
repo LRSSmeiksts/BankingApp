@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>details</title>
+</head>
+<body>
+<h2>Bank Account Details</h2>
+<div th:if="${username}" style="color: green;">
+    <span th:text="${username}"></span>
+</div>
+<div th:if="${balance}" style="color: green;">
+    <span th:text="${balance}"></span>
+</div>
+
+</body>
+</html>

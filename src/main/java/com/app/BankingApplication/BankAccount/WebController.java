@@ -19,7 +19,10 @@ public class WebController {
     }
     @GetMapping("/bank/{id}/menu")
     public String menu(){
-     return "redirect:/bank/{id}/menu";
+     return "menu";
     }
+
+    @GetMapping("/bank/{id}/viewDetails")
+    public String viewDetails(){return "viewDetails";}
 
 }
